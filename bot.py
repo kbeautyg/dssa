@@ -2473,9 +2473,9 @@ async def _rss_check_job(bot_instance: Any, db_session_maker_factory: Any, feed_
             # process_single_feed handles its own session management internally
             await rss_service.process_single_feed(bot_instance, db_session_maker_factory, feed)
             service_logger.info(f"Finished processing RSS feed {feed.id}.")
-
-        except Exception as e:
-            service_logger.error(f"Unhandled error in _rss_check_job for feed {feed_id}: {e}", exc_info=True)
+            
+    except Exception as e:
+        service_logger.error(f"Unhandled error in _rss_check_job for feed {feed_id}: {e}", exc_info=True)
             # Log the error. process_single_feed should handle updating last_checked_at even on error.
 
 
