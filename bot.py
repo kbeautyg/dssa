@@ -4189,7 +4189,7 @@ async def _update_feed_last_checked(db_session_maker_factory: Any, feed_id: int)
             # Commit the helper session immediately
             await session.commit()
             service_logger.debug(f"Updated last_checked_at for feed {feed_id}.")
-        except Exception as e:
+    except Exception as e:
             # This is a helper, log error but don't raise
             # Rollback if commit fails, though less critical for this specific update
             # The `async with session` block handles the rollback on exit if an exception occurs within it.
